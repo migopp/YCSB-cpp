@@ -1,0 +1,7 @@
+[project]
+name = "kvstore-bench"
+version = "0.1.0"
+description = "Benchmarking scripts for kvstore data collection."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []

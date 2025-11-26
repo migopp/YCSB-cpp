@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.10)
 project(ycsb-cpp LANGUAGES C CXX)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 
 set(CMAKE_BUILD_TYPE Release)
 set(CompilerFlags
@@ -203,3 +203,8 @@ include_directories(HdrHistogram_c/include)
 add_compile_definitions(HDRMEASUREMENT)
 add_dependencies(ycsb hdr_histogram_static)
 target_link_libraries(ycsb PRIVATE hdr_histogram_static)
+
+add_library(ojdkchm STATIC openjdk_concurrent_hash_map/openjdk_concurrent_hash_map.cpp)
+target_include_directories(ojdkchm PUBLIC ${PROJECT_SOURCE_DIR})
+target_include_directories(ojdkchm PUBLIC kvstore/include)
+target_link_libraries(ycsb PRIVATE ojdkchm)
