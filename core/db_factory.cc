@@ -10,8 +10,20 @@
 #include "basic_db.h"
 #include "db_wrapper.h"
 
+#include "ojdkchm_db/ojdkchm_db.h"
+#include "rwl_db/rwl_db.h"
+
 namespace ycsbc {
 
+namespace {
+
+bool ojdkchm_db_registered = DBFactory::RegisterDB(
+    "ojdkchm_db", []() -> DB * { return new ojdkchm_db(); });
+
+bool rwl_db_registered =
+    DBFactory::RegisterDB("rwl_db", []() -> DB * { return new rwl_db(); });
+
+} // namespace
 
 std::map<std::string, DBFactory::DBCreator> &DBFactory::Registry() {
   static std::map<std::string, DBCreator> registry;
@@ -35,4 +47,4 @@ DB *DBFactory::CreateDB(utils::Properties *props, Measurements *measurements) {
   return db;
 }
 
-} // ycsbc
+} // namespace ycsbc

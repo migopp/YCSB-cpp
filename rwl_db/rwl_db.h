@@ -1,5 +1,5 @@
 /**
- * @file openjdk_concurrent_hash_map.h
+ * @file rwl_db.h
  *
  * @author Michael Goppert <goppert@cs.utexas.edu>
  * @author Will Bolduc <wbolduc@cs.utexas.edu>
@@ -8,19 +8,17 @@
 #pragma once
 
 #include "core/db.h"
-#include <kvstore/openjdk_concurrent_hash_map.h>
+#include <kvstore/rwlock_hash_map.h>
 
 namespace ycsbc {
 
-class concurrent_hash_map : public DB {
+class rwl_db : public DB {
   public:
-    static DB *init();
+    rwl_db() = default;
 
-    concurrent_hash_map() = default;
+    rwl_db(const utils::Properties &props);
 
-    concurrent_hash_map(const utils::Properties &props);
-
-    virtual ~concurrent_hash_map() = default;
+    virtual ~rwl_db() = default;
 
     DB::Status Read(const std::string &table, const std::string &key,
                     const std::vector<std::string> *fields,
@@ -39,8 +37,7 @@ class concurrent_hash_map : public DB {
     DB::Status Delete(const std::string &table, const std::string &key);
 
   private:
-    kvstore::concurrent_hash_map _map;
-    static bool _registered;
+    static kvstore::rwlock_hash_map _map;
 };
 
 } // namespace ycsbc
