@@ -1,2 +1,7 @@
 default:
 	just --list
+
+base-chm:
+	uv run benchmark.py --db ojdkchm_db rwl_db --workload a b c d f --max 6 --trials 5
+	uv run collect_stats.py
+	uv run graph.py

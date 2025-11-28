@@ -24,7 +24,7 @@ class TrialConfig:
     threads: int
 
     def cmd(self):
-        return f"../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P workloads/workload{self.workload}"
+        return f"../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P ../workloads/workload{self.workload}"
 
 dbs = []
 workloads = []
@@ -95,10 +95,10 @@ def main():
     max_threads = args.max_threads
     trials = args.trials
 
-    for tr in range(trials):
-        for tc in range(1, max_threads + 1):
-            for db in dbs:
-                for work in workloads:
+    for tc in range(1, max_threads + 1):
+        for db in dbs:
+            for work in workloads:
+                for tr in range(trials):
                     cfg = TrialConfig(db, work, tc)
                     data = bench_one(cfg)
                     write_one(cfg, data)

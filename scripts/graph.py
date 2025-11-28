@@ -130,10 +130,18 @@ def main():
     cfg = GraphConfig(filtered_data)
 
     # Tasks.
-    ojdk_only_workloada_throughput = GraphTask("a", "run", "throughput", ["ojdkchm_db"])
+    ojdk_rwl_a_thru = GraphTask("a", "run", "throughput", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_b_thru = GraphTask("b", "run", "throughput", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_c_thru = GraphTask("c", "run", "throughput", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_d_thru = GraphTask("d", "run", "throughput", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_f_thru = GraphTask("f", "run", "throughput", ["ojdkchm_db", "rwl_db"])
 
     # Run 'em.
-    graph_one(cfg, ojdk_only_workloada_throughput, filtered_data)
+    graph_one(cfg, ojdk_rwl_a_thru, filtered_data)
+    graph_one(cfg, ojdk_rwl_b_thru, filtered_data)
+    graph_one(cfg, ojdk_rwl_c_thru, filtered_data)
+    graph_one(cfg, ojdk_rwl_d_thru, filtered_data)
+    graph_one(cfg, ojdk_rwl_f_thru, filtered_data)
 
 if __name__ == "__main__":
     main()
