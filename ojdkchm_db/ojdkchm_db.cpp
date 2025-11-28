@@ -14,7 +14,6 @@
 #define KVSTORE_OJDKCHM_IMPL
 #include "ojdkchm_db.h"
 
-#include "core/db_factory.h"
 #include <cassert>
 
 namespace ycsbc {

@@ -1,8 +1,8 @@
 /**
- * @file rwl_db.cpp
+ * @file gsm_db.cpp
  *
- * @author Michael Goppert <goppert@cs.utexas.edu>
  * @author Will Bolduc <wbolduc@cs.utexas.edu>
+ * @author Michael Goppert <goppert@cs.utexas.edu>
  */
 
 // This is f*cky.
@@ -11,16 +11,16 @@
 // because of ODR. But, header only included once!
 //
 // Add it here and pray for the best.
-#define KVSTORE_RWLHM_IMPL
-#include "rwl_db.h"
+#define KVSTORE_GSM_IMPL
+#include "gsm_db.h"
 
 #include <cassert>
 
 namespace ycsbc {
 
-rwl_db::rwl_db(const utils::Properties &props) {}
+gsm_db::gsm_db(const utils::Properties &props) {}
 
-DB::Status rwl_db::Read(const std::string &table, const std::string &key,
+DB::Status gsm_db::Read(const std::string &table, const std::string &key,
                         const std::vector<std::string> *fields,
                         std::vector<Field> &result) {
     auto res = _map.get(key);
@@ -32,14 +32,14 @@ DB::Status rwl_db::Read(const std::string &table, const std::string &key,
     }
 }
 
-DB::Status rwl_db::Scan(const std::string &table, const std::string &key,
+DB::Status gsm_db::Scan(const std::string &table, const std::string &key,
                         int len, const std::vector<std::string> *fields,
                         std::vector<std::vector<Field>> &result) {
     // Not implementable.
     return kOK;
 }
 
-DB::Status rwl_db::Update(const std::string &table, const std::string &key,
+DB::Status gsm_db::Update(const std::string &table, const std::string &key,
                           std::vector<Field> &values) {
     assert(values.size() == 1); // Only expected to update one value.
     auto res = _map.set(key, values[0].value);
@@ -47,7 +47,7 @@ DB::Status rwl_db::Update(const std::string &table, const std::string &key,
     return kOK;
 }
 
-DB::Status rwl_db::Insert(const std::string &table, const std::string &key,
+DB::Status gsm_db::Insert(const std::string &table, const std::string &key,
                           std::vector<Field> &values) {
     assert(values.size() == 1); // Only expected to insert one value.
     auto res = _map.set(key, values[0].value);
@@ -55,12 +55,12 @@ DB::Status rwl_db::Insert(const std::string &table, const std::string &key,
     return kOK;
 }
 
-DB::Status rwl_db::Delete(const std::string &table, const std::string &key) {
+DB::Status gsm_db::Delete(const std::string &table, const std::string &key) {
     auto res = _map.remove(key);
     assert(res.has_value()); // Should be in the map already.
     return kOK;
 }
 
-kvstore::rwlock_hash_map rwl_db::_map;
+kvstore::sync_map gsm_db::_map;
 
 } // namespace ycsbc

@@ -10,6 +10,7 @@
 #include "basic_db.h"
 #include "db_wrapper.h"
 
+#include "gsm_db/gsm_db.h"
 #include "ojdkchm_db/ojdkchm_db.h"
 #include "rwl_db/rwl_db.h"
 
@@ -22,6 +23,9 @@ bool ojdkchm_db_registered = DBFactory::RegisterDB(
 
 bool rwl_db_registered =
     DBFactory::RegisterDB("rwl_db", []() -> DB * { return new rwl_db(); });
+
+bool gsm_db_registered =
+    DBFactory::RegisterDB("gsm_db", []() -> DB * { return new gsm_db(); });
 
 } // namespace
 
