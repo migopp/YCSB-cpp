@@ -102,7 +102,15 @@ def graph_one(cfg, task, data):
     for db in y_map:
         y = y_map[db]["mean"]
         std = y_map[db]["std"]
-        plt.errorbar(x, y, yerr=std, fmt=cfg.markers[db], linestyle=cfg.linestyles[db], color=cfg.colors[db], capsize=4, label=db.split("_db")[0])
+        plt.errorbar(
+            x, y, yerr=std,
+            fmt=cfg.markers[db],
+            linestyle=cfg.linestyles[db],
+            color=cfg.colors[db],
+            ecolor="black",
+            capsize=4,
+            label=db.split("_db")[0]
+        )
 
     x_axis, y_axis = task.axes()
     tit = task.title()
