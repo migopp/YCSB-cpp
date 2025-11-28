@@ -92,6 +92,7 @@ def extract_from(task, data):
             base[db]["std"][i-1] = data[db][task.workload][str(i)][task.stage][task.metric]["std"]
             if task.metric == "throughput":
                 base[db]["mean"][i-1] /= 1000000
+                base[db]["std"][i-1] /= 1000000
     return (x, base)
 
 def graph_one(cfg, task, data):
