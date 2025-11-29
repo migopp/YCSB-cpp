@@ -214,6 +214,21 @@ target_include_directories(gsm_db PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(gsm_db PUBLIC kvstore/include)
 target_link_libraries(ycsb PRIVATE gsm_db)
 
+add_library(gsm_diom_db STATIC gsm_diom_db/gsm_diom_db.cpp)
+target_include_directories(gsm_diom_db PUBLIC ${PROJECT_SOURCE_DIR})
+target_include_directories(gsm_diom_db PUBLIC kvstore/include)
+target_link_libraries(ycsb PRIVATE gsm_diom_db)
+
+add_library(gsm_ii_db STATIC gsm_ii_db/gsm_ii_db.cpp)
+target_include_directories(gsm_ii_db PUBLIC ${PROJECT_SOURCE_DIR})
+target_include_directories(gsm_ii_db PUBLIC kvstore/include)
+target_link_libraries(ycsb PRIVATE gsm_ii_db)
+
+add_library(gsm_diom_ii_db STATIC gsm_diom_ii_db/gsm_diom_ii_db.cpp)
+target_include_directories(gsm_diom_ii_db PUBLIC ${PROJECT_SOURCE_DIR})
+target_include_directories(gsm_diom_ii_db PUBLIC kvstore/include)
+target_link_libraries(ycsb PRIVATE gsm_diom_ii_db)
+
 add_library(rwl_db STATIC rwl_db/rwl_db.cpp)
 target_include_directories(rwl_db PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(rwl_db PUBLIC kvstore/include)

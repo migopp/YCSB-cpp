@@ -11,6 +11,9 @@
 #include "db_wrapper.h"
 
 #include "gsm_db/gsm_db.h"
+#include "gsm_diom_db/gsm_diom_db.h"
+#include "gsm_diom_ii_db/gsm_diom_ii_db.h"
+#include "gsm_ii_db/gsm_ii_db.h"
 #include "ojdkchm_db/ojdkchm_db.h"
 #include "rwl_db/rwl_db.h"
 
@@ -26,6 +29,15 @@ bool rwl_db_registered =
 
 bool gsm_db_registered =
     DBFactory::RegisterDB("gsm_db", []() -> DB * { return new gsm_db(); });
+
+bool gsm_diom_db_registered = DBFactory::RegisterDB(
+    "gsm_diom_db", []() -> DB * { return new gsm_diom_db(); });
+
+bool gsm_ii_db_registered = DBFactory::RegisterDB(
+    "gsm_ii_db", []() -> DB * { return new gsm_ii_db(); });
+
+bool gsm_diom_ii_db_registered = DBFactory::RegisterDB(
+    "gsm_diom_ii_db", []() -> DB * { return new gsm_diom_ii_db(); });
 
 } // namespace
 
