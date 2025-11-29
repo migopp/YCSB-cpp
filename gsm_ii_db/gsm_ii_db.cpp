@@ -25,8 +25,9 @@ void gsm_ii_db::Cleanup() {
 extern bool makeNullptrIfExpunged(std::shared_ptr<mapEntry> entry);
 
 // return false if it was expunged
-extern bool swapEntryValueIfEntryIsNotExpunged(std::shared_ptr<mapEntry> entry,
-                                        std::shared_ptr<std::string> newValue);
+extern bool
+swapEntryValueIfEntryIsNotExpunged(std::shared_ptr<mapEntry> entry,
+                                   std::shared_ptr<std::string> newValue);
 extern void deleteEntry(std::shared_ptr<mapEntry> entry);
 
 DB::Status gsm_ii_db::Read(const std::string &, const std::string &key,
@@ -154,7 +155,7 @@ DB::Status gsm_ii_db::Insert(const std::string &, const std::string &key,
     // check if dirty exists
     if (!entryFoundFromReadOnly.hasBeenAmmended) {
         // nope! ok, we need to go ahead and make a new one.
-        std::cout << "This should literally never happen \n";
+        // std::cout << "This should literally never happen \n";
         makeNewDirtyMap();
         // Mark ammended
         std::shared_ptr<readOnlyMapHolder> newHolder =

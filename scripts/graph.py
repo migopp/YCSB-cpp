@@ -23,17 +23,15 @@ class GraphConfig:
         self.markers = {}
 
         num_dbs = len(filtered_data)
-        if num_dbs > 4:
-            raise NotImplementedError
         l_list = ["solid", "dotted", "dashed", "dashdot"]
         c_list = plt.cm.Greys(np.linspace(0.3, 0.8, num_dbs))
         m_list = ["o", "s", "^", "d"]
 
         i = 0
         for db, _ in filtered_data.items():
-            self.linestyles[db] = l_list[i]
+            self.linestyles[db] = l_list[i % 4]
             self.colors[db] = c_list[i]
-            self.markers[db] = m_list[i]
+            self.markers[db] = m_list[i % 4]
             i += 1
 
 @dataclass
@@ -134,34 +132,34 @@ def main():
     ojdk_rwl_b_thru = GraphTask("b", "run", "throughput", ["ojdkchm_db", "rwl_db"])
     ojdk_rwl_c_thru = GraphTask("c", "run", "throughput", ["ojdkchm_db", "rwl_db"])
     ojdk_rwl_d_thru = GraphTask("d", "run", "throughput", ["ojdkchm_db", "rwl_db"])
-    ojdk_rwl_f_thru = GraphTask("f", "run", "throughput", ["ojdkchm_db", "rwl_db"])
+    # ojdk_rwl_f_thru = GraphTask("f", "run", "throughput", ["ojdkchm_db", "rwl_db"])
     gsm_a_thru = GraphTask("a", "run", "throughput", ["gsm_db", "gsm_diom_db", "gsm_ii_db", "gsm_diom_ii_db"])
     gsm_b_thru = GraphTask("b", "run", "throughput", ["gsm_db", "gsm_diom_db", "gsm_ii_db", "gsm_diom_ii_db"])
     gsm_c_thru = GraphTask("c", "run", "throughput", ["gsm_db", "gsm_diom_db", "gsm_ii_db", "gsm_diom_ii_db"])
     gsm_d_thru = GraphTask("d", "run", "throughput", ["gsm_db", "gsm_diom_db", "gsm_ii_db", "gsm_diom_ii_db"])
-    gsm_f_thru = GraphTask("f", "run", "throughput", ["gsm_db", "gsm_diom_db", "gsm_ii_db", "gsm_diom_ii_db"])
+    # gsm_f_thru = GraphTask("f", "run", "throughput", ["gsm_db", "gsm_diom_db", "gsm_ii_db", "gsm_diom_ii_db"])
     gsm_rwl_a_thru = GraphTask("a", "run", "throughput", ["gsm_db", "rwl_db"])
     gsm_rwl_b_thru = GraphTask("b", "run", "throughput", ["gsm_db", "rwl_db"])
     gsm_rwl_c_thru = GraphTask("c", "run", "throughput", ["gsm_db", "rwl_db"])
     gsm_rwl_d_thru = GraphTask("d", "run", "throughput", ["gsm_db", "rwl_db"])
-    gsm_rwl_f_thru = GraphTask("f", "run", "throughput", ["gsm_db", "rwl_db"])
+    # gsm_rwl_f_thru = GraphTask("f", "run", "throughput", ["gsm_db", "rwl_db"])
 
     # Run 'em.
     graph_one(cfg, ojdk_rwl_a_thru, filtered_data)
     graph_one(cfg, ojdk_rwl_b_thru, filtered_data)
     graph_one(cfg, ojdk_rwl_c_thru, filtered_data)
     graph_one(cfg, ojdk_rwl_d_thru, filtered_data)
-    graph_one(cfg, ojdk_rwl_f_thru, filtered_data)
+    # graph_one(cfg, ojdk_rwl_f_thru, filtered_data)
     graph_one(cfg, gsm_a_thru, filtered_data)
     graph_one(cfg, gsm_b_thru, filtered_data)
     graph_one(cfg, gsm_c_thru, filtered_data)
     graph_one(cfg, gsm_d_thru, filtered_data)
-    graph_one(cfg, gsm_f_thru, filtered_data)
+    # graph_one(cfg, gsm_f_thru, filtered_data)
     graph_one(cfg, gsm_rwl_a_thru, filtered_data)
     graph_one(cfg, gsm_rwl_b_thru, filtered_data)
     graph_one(cfg, gsm_rwl_c_thru, filtered_data)
     graph_one(cfg, gsm_rwl_d_thru, filtered_data)
-    graph_one(cfg, gsm_rwl_f_thru, filtered_data)
+    # graph_one(cfg, gsm_rwl_f_thru, filtered_data)
 
 if __name__ == "__main__":
     main()

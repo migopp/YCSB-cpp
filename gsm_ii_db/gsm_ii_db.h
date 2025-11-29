@@ -98,10 +98,10 @@ class gsm_ii_db : public ycsbc::DB {
         // Current size = " << dirtyMap->size() << " currentMisses = " <<
         // currentMisses << "\n";
         if (currentMisses >= dirtyMap->size()) {
-            std::cout << "Uh oh! Too many misses, better expand da map. "
-                         "Current size = "
-                      << dirtyMap->size()
-                      << " currentMisses = " << currentMisses << "\n";
+            // std::cout << "Uh oh! Too many misses, better expand da map. "
+            // "Current size = "
+            // << dirtyMap->size()
+            // << " currentMisses = " << currentMisses << "\n";
             // make a new readOnlyMapHolder
             std::shared_ptr<readOnlyMapHolder> newHolder =
                 std::make_shared<readOnlyMapHolder>();

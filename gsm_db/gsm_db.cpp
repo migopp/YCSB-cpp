@@ -190,7 +190,7 @@ DB::Status gsm_db::Insert(const std::string &, const std::string &key,
     // check if dirty exists
     if (!entryFoundFromReadOnly.hasBeenAmmended) {
         // nope! ok, we need to go ahead and make a new one.
-        std::cout << "This should literally never happen \n";
+        // std::cout << "This should literally never happen \n";
         makeNewDirtyMap();
         // Mark ammended
         std::shared_ptr<readOnlyMapHolder> newHolder =
