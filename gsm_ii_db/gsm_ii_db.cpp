@@ -13,7 +13,7 @@
 // Add it here and pray for the best.
 #define KVSTORE_GSM_II_IMPL
 #include "gsm_ii_db.h"
-
+#include <iostream>
 #include <cassert>
 
 namespace ycsbc {
@@ -23,6 +23,7 @@ gsm_ii_db::gsm_ii_db(const utils::Properties &props) {}
 DB::Status gsm_ii_db::Read(const std::string &table, const std::string &key,
                            const std::vector<std::string> *fields,
                            std::vector<Field> &result) {
+    //std::cout << "apple \n";
     auto res = _map.get(key);
     if (res.has_value()) {
         result.push_back({key, res.value()});
