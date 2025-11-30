@@ -8,3 +8,6 @@ build:
 
 clean:
 	rm -rf build compile_commands.json
+
+bench:
+    just -f scripts/justfile --working-directory scripts all

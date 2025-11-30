@@ -209,6 +209,11 @@ target_include_directories(ojdkchm_db PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(ojdkchm_db PUBLIC kvstore/include)
 target_link_libraries(ycsb PRIVATE ojdkchm_db)
 
+add_library(ojdkchm_oa_db STATIC ojdkchm_oa_db/ojdkchm_oa_db.cpp)
+target_include_directories(ojdkchm_oa_db PUBLIC ${PROJECT_SOURCE_DIR})
+target_include_directories(ojdkchm_oa_db PUBLIC kvstore/include)
+target_link_libraries(ycsb PRIVATE ojdkchm_oa_db)
+
 add_library(gsm_db STATIC gsm_db/gsm_db.cpp)
 target_include_directories(gsm_db PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(gsm_db PUBLIC kvstore/include)

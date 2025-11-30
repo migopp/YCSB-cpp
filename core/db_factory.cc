@@ -15,6 +15,7 @@
 #include "gsm_diom_ii_db/gsm_diom_ii_db.h"
 #include "gsm_ii_db/gsm_ii_db.h"
 #include "ojdkchm_db/ojdkchm_db.h"
+#include "ojdkchm_oa_db/ojdkchm_oa_db.h"
 #include "rwl_db/rwl_db.h"
 
 namespace ycsbc {
@@ -23,6 +24,9 @@ namespace {
 
 bool ojdkchm_db_registered = DBFactory::RegisterDB(
     "ojdkchm_db", []() -> DB * { return new ojdkchm_db(); });
+
+bool ojdkchm_oa_db_registered = DBFactory::RegisterDB(
+    "ojdkchm_oa_db", []() -> DB * { return new ojdkchm_oa_db(); });
 
 bool rwl_db_registered =
     DBFactory::RegisterDB("rwl_db", []() -> DB * { return new rwl_db(); });
