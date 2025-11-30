@@ -39,6 +39,7 @@ class GraphTask:
     workload: str
     stage: str
     metric: str
+    dist: str
     dbs: list[str] = field(default_factory=list)
 
     def __str__(self):
@@ -61,20 +62,15 @@ class GraphTask:
         return (x, y)
 
     def title(self):
-        if self.workload == "a":
-            return "50% Reads, 50% Updates"
-        elif self.workload == "b":
-            return "95% Reads, 5% Updates"
-        elif self.workload == "c":
-            return "100% Reads"
-        elif self.workload == "d":
-            return "95% Reads, 5% Inserts"
-        elif self.workload == "e":
-            return "95% Scans, 5% Inserts"
-        elif self.workload == "f":
-            return "50% Reads, 50% RMW"
-        else:
-            raise NotImplementedError
+        workload_map = {
+            "a": "50% reads, 50% updates",
+            "b": "95% reads, 5% updates",
+            "c": "100% reads",
+            "d": "95% reads, 5% inserts",
+            "e": "50% scans, 5% updates",
+            "f": "50% reads, 50% rwm",
+        }
+        return f"{workload_map[self.workload]}, {self.dist}"
 
 def read_all():
     with open("../filtered_data.json", "r") as f:
@@ -82,12 +78,12 @@ def read_all():
 
 def extract_from(task, data):
     # Should all have data for same set of thread counts. (?)
-    x = [int(i) for i in data[task.dbs[0]][task.workload]]
+    x = [int(i) for i in data[task.dbs[0]][task.workload][task.dist]]
     base = {db: {"mean": [0 for i in x], "std": [0 for i in x]} for db in task.dbs}
     for i in x:
         for db in task.dbs:
-            base[db]["mean"][i-1] = data[db][task.workload][str(i)][task.stage][task.metric]["mean"]
-            base[db]["std"][i-1] = data[db][task.workload][str(i)][task.stage][task.metric]["std"]
+            base[db]["mean"][i-1] = data[db][task.workload][task.dist][str(i)][task.stage][task.metric]["mean"]
+            base[db]["std"][i-1] = data[db][task.workload][task.dist][str(i)][task.stage][task.metric]["std"]
             if task.metric == "throughput":
                 base[db]["mean"][i-1] /= 1000000
                 base[db]["std"][i-1] /= 1000000
@@ -110,6 +106,8 @@ def graph_one(cfg, task, data):
             label=db.split("_db")[0]
         )
 
+    plt.axvline(x=6, color="black", linestyle=":", linewidth=1.5)
+
     x_axis, y_axis = task.axes()
     tit = task.title()
     plt.xlabel(x_axis)
@@ -127,75 +125,173 @@ def main():
     filtered_data = read_all()
     cfg = GraphConfig(filtered_data)
 
-    ojdk_rwl_a_thru = GraphTask("a", "run", "throughput", ["ojdkchm_db", "rwl_db"])
-    ojdk_rwl_b_thru = GraphTask("b", "run", "throughput", ["ojdkchm_db", "rwl_db"])
-    ojdk_rwl_c_thru = GraphTask("c", "run", "throughput", ["ojdkchm_db", "rwl_db"])
-    ojdk_rwl_d_thru = GraphTask("d", "run", "throughput", ["ojdkchm_db", "rwl_db"])
-    ojdk_rwl_f_thru = GraphTask("f", "run", "throughput", ["ojdkchm_db", "rwl_db"])
-    graph_one(cfg, ojdk_rwl_a_thru, filtered_data)
-    graph_one(cfg, ojdk_rwl_b_thru, filtered_data)
-    graph_one(cfg, ojdk_rwl_c_thru, filtered_data)
-    graph_one(cfg, ojdk_rwl_d_thru, filtered_data)
-    graph_one(cfg, ojdk_rwl_f_thru, filtered_data)
+    # ConcurrentHashMap Uniform
+    ojdk_rwl_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_c_thru_u = GraphTask("c", "run", "throughput", "uniform", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_d_thru_u = GraphTask("d", "run", "throughput", "uniform", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_f_thru_u = GraphTask("f", "run", "throughput", "uniform", ["ojdkchm_db", "rwl_db"])
+    graph_one(cfg, ojdk_rwl_a_thru_u, filtered_data)
+    graph_one(cfg, ojdk_rwl_b_thru_u, filtered_data)
+    graph_one(cfg, ojdk_rwl_c_thru_u, filtered_data)
+    graph_one(cfg, ojdk_rwl_d_thru_u, filtered_data)
+    graph_one(cfg, ojdk_rwl_f_thru_u, filtered_data)
 
-    ojdk_oa_rwl_a_thru = GraphTask("a", "run", "throughput", ["ojdkchm_oa_db", "rwl_db"])
-    ojdk_oa_rwl_b_thru = GraphTask("b", "run", "throughput", ["ojdkchm_oa_db", "rwl_db"])
-    ojdk_oa_rwl_c_thru = GraphTask("c", "run", "throughput", ["ojdkchm_oa_db", "rwl_db"])
-    ojdk_oa_rwl_d_thru = GraphTask("d", "run", "throughput", ["ojdkchm_oa_db", "rwl_db"])
-    ojdk_oa_rwl_f_thru = GraphTask("f", "run", "throughput", ["ojdkchm_oa_db", "rwl_db"])
-    graph_one(cfg, ojdk_oa_rwl_a_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_rwl_b_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_rwl_c_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_rwl_d_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_rwl_f_thru, filtered_data)
+    ojdk_oa_rwl_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_c_thru_u = GraphTask("c", "run", "throughput", "uniform", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_d_thru_u = GraphTask("d", "run", "throughput", "uniform", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_f_thru_u = GraphTask("f", "run", "throughput", "uniform", ["ojdkchm_oa_db", "rwl_db"])
+    graph_one(cfg, ojdk_oa_rwl_a_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_b_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_c_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_d_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_f_thru_u, filtered_data)
 
-    ojdk_oa_a_thru = GraphTask("a", "run", "throughput", ["ojdkchm_oa_db", "ojdkchm_db"])
-    ojdk_oa_b_thru = GraphTask("b", "run", "throughput", ["ojdkchm_oa_db", "ojdkchm_db"])
-    ojdk_oa_c_thru = GraphTask("c", "run", "throughput", ["ojdkchm_oa_db", "ojdkchm_db"])
-    ojdk_oa_d_thru = GraphTask("d", "run", "throughput", ["ojdkchm_oa_db", "ojdkchm_db"])
-    ojdk_oa_f_thru = GraphTask("f", "run", "throughput", ["ojdkchm_oa_db", "ojdkchm_db"])
-    graph_one(cfg, ojdk_oa_a_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_b_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_c_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_d_thru, filtered_data)
-    graph_one(cfg, ojdk_oa_f_thru, filtered_data)
+    ojdk_oa_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_c_thru_u = GraphTask("c", "run", "throughput", "uniform", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_d_thru_u = GraphTask("d", "run", "throughput", "uniform", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_f_thru_u = GraphTask("f", "run", "throughput", "uniform", ["ojdkchm_oa_db", "ojdkchm_db"])
+    graph_one(cfg, ojdk_oa_a_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_b_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_c_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_d_thru_u, filtered_data)
+    graph_one(cfg, ojdk_oa_f_thru_u, filtered_data)
 
-    gsm_a_thru = GraphTask("a", "run", "throughput", ["gsm_db", "gsm_diom_ii_db"])
-    gsm_b_thru = GraphTask("b", "run", "throughput", ["gsm_db", "gsm_diom_ii_db"])
-    gsm_c_thru = GraphTask("c", "run", "throughput", ["gsm_db", "gsm_diom_ii_db"])
-    gsm_d_thru = GraphTask("d", "run", "throughput", ["gsm_db", "gsm_diom_ii_db"])
-    gsm_f_thru = GraphTask("f", "run", "throughput", ["gsm_db", "gsm_diom_ii_db"])
-    graph_one(cfg, gsm_a_thru, filtered_data)
-    graph_one(cfg, gsm_b_thru, filtered_data)
-    graph_one(cfg, gsm_c_thru, filtered_data)
-    graph_one(cfg, gsm_d_thru, filtered_data)
-    graph_one(cfg, gsm_f_thru, filtered_data)
+    # ConcurrentHashMap Zipfian
+    ojdk_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_c_thru_z = GraphTask("c", "run", "throughput", "zipfian", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_d_thru_z = GraphTask("d", "run", "throughput", "zipfian", ["ojdkchm_db", "rwl_db"])
+    ojdk_rwl_f_thru_z = GraphTask("f", "run", "throughput", "zipfian", ["ojdkchm_db", "rwl_db"])
+    graph_one(cfg, ojdk_rwl_a_thru_z, filtered_data)
+    graph_one(cfg, ojdk_rwl_b_thru_z, filtered_data)
+    graph_one(cfg, ojdk_rwl_c_thru_z, filtered_data)
+    graph_one(cfg, ojdk_rwl_d_thru_z, filtered_data)
+    graph_one(cfg, ojdk_rwl_f_thru_z, filtered_data)
 
+    ojdk_oa_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_c_thru_z = GraphTask("c", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_d_thru_z = GraphTask("d", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "rwl_db"])
+    ojdk_oa_rwl_f_thru_z = GraphTask("f", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "rwl_db"])
+    graph_one(cfg, ojdk_oa_rwl_a_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_b_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_c_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_d_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_rwl_f_thru_z, filtered_data)
 
-    gsm_diom_ii_rwl_a_thru = GraphTask("a", "run", "throughput", ["gsm_diom_ii_db", "rwl_db"])
-    gsm_diom_ii_rwl_b_thru = GraphTask("b", "run", "throughput", ["gsm_diom_ii_db", "rwl_db"])
-    gsm_diom_ii_rwl_c_thru = GraphTask("c", "run", "throughput", ["gsm_diom_ii_db", "rwl_db"])
-    gsm_diom_ii_rwl_d_thru = GraphTask("d", "run", "throughput", ["gsm_diom_ii_db", "rwl_db"])
-    gsm_diom_ii_rwl_f_thru = GraphTask("f", "run", "throughput", ["gsm_diom_ii_db", "rwl_db"])
-    graph_one(cfg, gsm_diom_ii_rwl_a_thru, filtered_data)
-    graph_one(cfg, gsm_diom_ii_rwl_b_thru, filtered_data)
-    graph_one(cfg, gsm_diom_ii_rwl_c_thru, filtered_data)
-    graph_one(cfg, gsm_diom_ii_rwl_d_thru, filtered_data)
-    graph_one(cfg, gsm_diom_ii_rwl_f_thru, filtered_data)
+    ojdk_oa_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_c_thru_z = GraphTask("c", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_d_thru_z = GraphTask("d", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db"])
+    ojdk_oa_f_thru_z = GraphTask("f", "run", "throughput", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db"])
+    graph_one(cfg, ojdk_oa_a_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_b_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_c_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_d_thru_z, filtered_data)
+    graph_one(cfg, ojdk_oa_f_thru_z, filtered_data)
 
-    gsm_rwl_a_thru = GraphTask("a", "run", "throughput", ["gsm_db", "rwl_db"])
-    gsm_rwl_b_thru = GraphTask("b", "run", "throughput", ["gsm_db", "rwl_db"])
-    gsm_rwl_c_thru = GraphTask("c", "run", "throughput", ["gsm_db", "rwl_db"])
-    gsm_rwl_d_thru = GraphTask("d", "run", "throughput", ["gsm_db", "rwl_db"])
-    gsm_rwl_f_thru = GraphTask("f", "run", "throughput", ["gsm_db", "rwl_db"])
-    graph_one(cfg, gsm_rwl_a_thru, filtered_data)
-    graph_one(cfg, gsm_rwl_b_thru, filtered_data)
-    graph_one(cfg, gsm_rwl_c_thru, filtered_data)
-    graph_one(cfg, gsm_rwl_d_thru, filtered_data)
-    graph_one(cfg, gsm_rwl_f_thru, filtered_data)
+    # sync.Map Uniform
+    gsm_rwl_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["gsm_db", "rwl_db"])
+    gsm_rwl_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["gsm_db", "rwl_db"])
+    gsm_rwl_c_thru_u = GraphTask("c", "run", "throughput", "uniform", ["gsm_db", "rwl_db"])
+    gsm_rwl_d_thru_u = GraphTask("d", "run", "throughput", "uniform", ["gsm_db", "rwl_db"])
+    gsm_rwl_f_thru_u = GraphTask("f", "run", "throughput", "uniform", ["gsm_db", "rwl_db"])
+    graph_one(cfg, gsm_rwl_a_thru_u, filtered_data)
+    graph_one(cfg, gsm_rwl_b_thru_u, filtered_data)
+    graph_one(cfg, gsm_rwl_c_thru_u, filtered_data)
+    graph_one(cfg, gsm_rwl_d_thru_u, filtered_data)
+    graph_one(cfg, gsm_rwl_f_thru_u, filtered_data)
 
-    rwl_b_thru = GraphTask("b", "run", "throughput", ["rwl_db"])
-    graph_one(cfg, rwl_b_thru, filtered_data)
+    gsm_diom_ii_rwl_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_c_thru_u = GraphTask("c", "run", "throughput", "uniform", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_d_thru_u = GraphTask("d", "run", "throughput", "uniform", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_f_thru_u = GraphTask("f", "run", "throughput", "uniform", ["gsm_diom_ii_db", "rwl_db"])
+    graph_one(cfg, gsm_diom_ii_rwl_a_thru_u, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_b_thru_u, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_c_thru_u, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_d_thru_u, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_f_thru_u, filtered_data)
+
+    gsm_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_c_thru_u = GraphTask("c", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_d_thru_u = GraphTask("d", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_f_thru_u = GraphTask("f", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_ii_db"])
+    graph_one(cfg, gsm_a_thru_u, filtered_data)
+    graph_one(cfg, gsm_b_thru_u, filtered_data)
+    graph_one(cfg, gsm_c_thru_u, filtered_data)
+    graph_one(cfg, gsm_d_thru_u, filtered_data)
+    graph_one(cfg, gsm_f_thru_u, filtered_data)
+
+    # sync.Map Zipfian
+    gsm_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_db", "rwl_db"])
+    gsm_rwl_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["gsm_db", "rwl_db"])
+    gsm_rwl_c_thru_z = GraphTask("c", "run", "throughput", "zipfian", ["gsm_db", "rwl_db"])
+    gsm_rwl_d_thru_z = GraphTask("d", "run", "throughput", "zipfian", ["gsm_db", "rwl_db"])
+    gsm_rwl_f_thru_z = GraphTask("f", "run", "throughput", "zipfian", ["gsm_db", "rwl_db"])
+    graph_one(cfg, gsm_rwl_a_thru_z, filtered_data)
+    graph_one(cfg, gsm_rwl_b_thru_z, filtered_data)
+    graph_one(cfg, gsm_rwl_c_thru_z, filtered_data)
+    graph_one(cfg, gsm_rwl_d_thru_z, filtered_data)
+    graph_one(cfg, gsm_rwl_f_thru_z, filtered_data)
+
+    gsm_diom_ii_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_c_thru_z = GraphTask("c", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_d_thru_z = GraphTask("d", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "rwl_db"])
+    gsm_diom_ii_rwl_f_thru_z = GraphTask("f", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "rwl_db"])
+    graph_one(cfg, gsm_diom_ii_rwl_a_thru_z, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_b_thru_z, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_c_thru_z, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_d_thru_z, filtered_data)
+    graph_one(cfg, gsm_diom_ii_rwl_f_thru_z, filtered_data)
+
+    gsm_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_c_thru_z = GraphTask("c", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_d_thru_z = GraphTask("d", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db"])
+    gsm_f_thru_z = GraphTask("f", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db"])
+    graph_one(cfg, gsm_a_thru_z, filtered_data)
+    graph_one(cfg, gsm_b_thru_z, filtered_data)
+    graph_one(cfg, gsm_c_thru_z, filtered_data)
+    graph_one(cfg, gsm_d_thru_z, filtered_data)
+    graph_one(cfg, gsm_f_thru_z, filtered_data)
+
+    # RWLock Uniform
+    rwl_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["rwl_db"])
+    graph_one(cfg, rwl_b_thru_u, filtered_data)
+
+    # RWLock Zipfian
+    rwl_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["rwl_db"])
+    graph_one(cfg, rwl_b_thru_z, filtered_data)
+
+    # Uniform
+    gsm_ojdk_rwl_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_c_thru_u = GraphTask("c", "run", "throughput", "uniform", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_d_thru_u = GraphTask("d", "run", "throughput", "uniform", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_f_thru_u = GraphTask("f", "run", "throughput", "uniform", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    graph_one(cfg, gsm_ojdk_rwl_a_thru_u, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_b_thru_u, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_c_thru_u, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_d_thru_u, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_f_thru_u, filtered_data)
+
+    # Zipfian
+    gsm_ojdk_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_c_thru_z = GraphTask("c", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_d_thru_z = GraphTask("d", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_f_thru_z = GraphTask("f", "run", "throughput", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    graph_one(cfg, gsm_ojdk_rwl_a_thru_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_b_thru_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_c_thru_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_d_thru_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_f_thru_z, filtered_data)
 
 if __name__ == "__main__":
     main()

@@ -22,9 +22,11 @@ class TrialConfig:
     db_name: str
     workload: str
     threads: int
+    dist: str
 
     def cmd(self):
-        return f"../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P ../workloads/workload{self.workload}"
+        req_dist = f"-p requestdistribution={self.dist}" if self.dist != "uniform" else ""
+        return f"../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P ../workloads/workload{self.workload} {req_dist}"
 
 dbs = []
 workloads = []
@@ -77,12 +79,14 @@ def write_one(cfg, data):
         old_data = {
             db: {
                 work: {
-                    str(t): [] for t in range(1, max_threads + 1)
+                    cfg.dist: {
+                        str(t): [] for t in range(1, max_threads + 1)
+                    }
                 } for work in workloads
             } for db in dbs
         }
 
-    old_data.setdefault(cfg.db_name, {}).setdefault(cfg.workload, {}).setdefault(str(cfg.threads), []).append(data)
+    old_data.setdefault(cfg.db_name, {}).setdefault(cfg.workload, {}).setdefault(cfg.dist, {}).setdefault(str(cfg.threads), []).append(data)
     with open("../raw_data.json", "w") as f:
         json.dump(old_data, f, indent=4)
 
@@ -98,10 +102,11 @@ def main():
     for tc in range(1, max_threads + 1):
         for db in dbs:
             for work in workloads:
-                for tr in range(trials):
-                    cfg = TrialConfig(db, work, tc)
-                    data = bench_one(cfg)
-                    write_one(cfg, data)
+                for req_dist in ["uniform", "zipfian"]:
+                    for tr in range(trials):
+                        cfg = TrialConfig(db, work, tc, req_dist)
+                        data = bench_one(cfg)
+                        write_one(cfg, data)
 
 if __name__ == "__main__":
     main()

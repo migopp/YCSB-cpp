@@ -14,6 +14,7 @@ class StatConfig:
     db_name: str
     workload: str
     threads: str
+    dist: str
     data: list = field(default_factory=list)
     stats: dict = field(default_factory=dict)
 
@@ -28,7 +29,7 @@ def write_one(cfg):
     except:
         old_data = {}
 
-    old_data.setdefault(cfg.db_name, {}).setdefault(cfg.workload, {})[cfg.threads] = cfg.stats
+    old_data.setdefault(cfg.db_name, {}).setdefault(cfg.workload, {}).setdefault(cfg.dist, {})[cfg.threads] = cfg.stats
     with open("../filtered_data.json", "w") as f:
         json.dump(old_data, f, indent=4)
 
@@ -48,10 +49,11 @@ def main():
     raw_data = read_all()
     for db, d_rest in raw_data.items():
         for work, w_rest in d_rest.items():
-            for threads, data in w_rest.items():
-                cfg = StatConfig(db, work, threads, data)
-                stat_one(cfg)
-                write_one(cfg)
+            for dist, di_rest in w_rest.items():
+                for threads, data in di_rest.items():
+                    cfg = StatConfig(db, work, threads, dist, data)
+                    stat_one(cfg)
+                    write_one(cfg)
 
 if __name__ == "__main__":
     main()
