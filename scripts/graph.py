@@ -46,7 +46,7 @@ class GraphTask:
         me2 = ""
         for db in self.dbs:
             me2 += db + "-"
-        me2 += self.workload + "-" + self.stage + "-" + self.metric
+        me2 += self.workload + "-" + self.stage + "-" + self.metric + "-" + self.dist
         return me2
 
     def axes(self):
