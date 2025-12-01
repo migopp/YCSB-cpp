@@ -69,6 +69,7 @@ class GraphTask:
             "d": "95% reads, 5% inserts",
             "e": "50% scans, 5% updates",
             "f": "50% reads, 50% rwm",
+            "L": "90% bad reads, 5% reads, 5% insert"
         }
         return f"{workload_map[self.workload]}, {self.dist}"
 
@@ -161,6 +162,9 @@ def main():
     graph_one(cfg, gsm_d_thru_u, filtered_data)
     graph_one(cfg, gsm_f_thru_u, filtered_data)
 
+    gsm_L_thru_u = GraphTask("L", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_db", "gsm_diom_ii_db"])
+    graph_one(cfg, gsm_L_thru_u, filtered_data)
+
     # sync.Map Zipfian
     gsm_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
     gsm_b_thru_z = GraphTask("b", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
@@ -172,6 +176,9 @@ def main():
     graph_one(cfg, gsm_c_thru_z, filtered_data)
     graph_one(cfg, gsm_d_thru_z, filtered_data)
     graph_one(cfg, gsm_f_thru_z, filtered_data)
+
+    gsm_L_thru_v = GraphTask("L", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_db", "gsm_diom_ii_db"])
+    graph_one(cfg, gsm_L_thru_v, filtered_data)
 
     # RWLock Uniform
     rwl_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["rwl_db"])

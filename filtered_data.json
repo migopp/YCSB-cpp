@@ -10893,6 +10893,732 @@
                     }
                 }
             }
+        },
+        "L": {
+            "uniform": {
+                "1": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.307,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 325694.6,
+                            "std": 2262.975
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.392,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2549448.0,
+                            "std": 11148.469
+                        }
+                    }
+                },
+                "2": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.176,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 569782.2,
+                            "std": 4701.638
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.39,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2563743.0,
+                            "std": 79430.492
+                        }
+                    }
+                },
+                "3": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.129,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 774915.0,
+                            "std": 10964.09
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.405,
+                            "std": 0.004
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2470376.0,
+                            "std": 22651.257
+                        }
+                    }
+                },
+                "4": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.108,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 926587.1,
+                            "std": 20216.985
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.416,
+                            "std": 0.007
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2404015.0,
+                            "std": 37354.612
+                        }
+                    }
+                },
+                "5": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.095,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1050198.0,
+                            "std": 14802.931
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.436,
+                            "std": 0.003
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2295511.0,
+                            "std": 15377.47
+                        }
+                    }
+                },
+                "6": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.103,
+                            "std": 0.019
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 996317.7,
+                            "std": 165111.671
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.46,
+                            "std": 0.009
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2172337.0,
+                            "std": 42503.239
+                        }
+                    }
+                },
+                "7": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.118,
+                            "std": 0.003
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 845075.1,
+                            "std": 20213.833
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.493,
+                            "std": 0.006
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2030706.0,
+                            "std": 23672.029
+                        }
+                    }
+                },
+                "8": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.112,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 889608.0,
+                            "std": 6902.179
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.521,
+                            "std": 0.008
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1919552.0,
+                            "std": 30087.418
+                        }
+                    }
+                },
+                "9": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.108,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 928806.8,
+                            "std": 6131.332
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.545,
+                            "std": 0.005
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1836007.0,
+                            "std": 17670.89
+                        }
+                    }
+                },
+                "10": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 944338.4,
+                            "std": 8978.563
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.563,
+                            "std": 0.006
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1777176.0,
+                            "std": 19309.99
+                        }
+                    }
+                },
+                "11": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.105,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 951766.4,
+                            "std": 8193.388
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.577,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1732613.0,
+                            "std": 6277.7
+                        }
+                    }
+                },
+                "12": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.105,
+                            "std": 0.0
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 951161.1,
+                            "std": 2365.076
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.587,
+                            "std": 0.003
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1704717.0,
+                            "std": 7680.328
+                        }
+                    }
+                }
+            },
+            "zipfian": {
+                "1": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.309,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 323371.7,
+                            "std": 1931.074
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.393,
+                            "std": 0.004
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2547176.0,
+                            "std": 23765.63
+                        }
+                    }
+                },
+                "2": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.176,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 568657.7,
+                            "std": 5963.737
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.39,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2566366.0,
+                            "std": 77593.094
+                        }
+                    }
+                },
+                "3": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.131,
+                            "std": 0.004
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 763867.3,
+                            "std": 21233.192
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.397,
+                            "std": 0.005
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2516862.0,
+                            "std": 32527.166
+                        }
+                    }
+                },
+                "4": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.108,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 925869.3,
+                            "std": 10846.031
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.417,
+                            "std": 0.005
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2398747.0,
+                            "std": 30707.863
+                        }
+                    }
+                },
+                "5": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.097,
+                            "std": 0.005
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1038078.3,
+                            "std": 52820.227
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.434,
+                            "std": 0.006
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2306666.0,
+                            "std": 30433.27
+                        }
+                    }
+                },
+                "6": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.101,
+                            "std": 0.016
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1010331.2,
+                            "std": 137994.577
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.46,
+                            "std": 0.005
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2175919.0,
+                            "std": 24619.677
+                        }
+                    }
+                },
+                "7": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.118,
+                            "std": 0.004
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 850092.2,
+                            "std": 33454.513
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.493,
+                            "std": 0.006
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 2028912.0,
+                            "std": 25088.312
+                        }
+                    }
+                },
+                "8": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.112,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 892168.0,
+                            "std": 16810.058
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.519,
+                            "std": 0.006
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1925499.0,
+                            "std": 20970.971
+                        }
+                    }
+                },
+                "9": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.108,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 926426.7,
+                            "std": 12467.297
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.546,
+                            "std": 0.007
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1830548.0,
+                            "std": 22059.92
+                        }
+                    }
+                },
+                "10": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 946557.9,
+                            "std": 5170.285
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.563,
+                            "std": 0.005
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1777782.0,
+                            "std": 14526.052
+                        }
+                    }
+                },
+                "11": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.104,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 958335.3,
+                            "std": 6371.352
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.577,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1733023.0,
+                            "std": 6106.437
+                        }
+                    }
+                },
+                "12": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.105,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 948750.9,
+                            "std": 9604.864
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.586,
+                            "std": 0.004
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1707540.0,
+                            "std": 10876.33
+                        }
+                    }
+                }
+            }
         }
     },
     "gsm_diom_db": {
@@ -14521,6 +15247,732 @@
                         "throughput": {
                             "mean": 712234.9,
                             "std": 3810.936
+                        }
+                    }
+                }
+            }
+        },
+        "L": {
+            "uniform": {
+                "1": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.309,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 323566.1,
+                            "std": 2515.184
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.858,
+                            "std": 0.004
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1166103.0,
+                            "std": 5392.928
+                        }
+                    }
+                },
+                "2": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.176,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 566794.6,
+                            "std": 5491.156
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.791,
+                            "std": 0.01
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1264285.0,
+                            "std": 16387.49
+                        }
+                    }
+                },
+                "3": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.13,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 767611.0,
+                            "std": 9620.027
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.782,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1279349.0,
+                            "std": 20007.77
+                        }
+                    }
+                },
+                "4": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.109,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 914085.6,
+                            "std": 14114.985
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.787,
+                            "std": 0.009
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1271015.0,
+                            "std": 14698.79
+                        }
+                    }
+                },
+                "5": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.095,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1049411.0,
+                            "std": 16248.355
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.791,
+                            "std": 0.011
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1264851.0,
+                            "std": 17843.033
+                        }
+                    }
+                },
+                "6": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.095,
+                            "std": 0.01
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1055944.0,
+                            "std": 94391.748
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.817,
+                            "std": 0.01
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1224235.0,
+                            "std": 15168.779
+                        }
+                    }
+                },
+                "7": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.119,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 839792.2,
+                            "std": 16359.78
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.849,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1178711.0,
+                            "std": 16417.941
+                        }
+                    }
+                },
+                "8": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.112,
+                            "std": 0.003
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 895219.6,
+                            "std": 23575.869
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.866,
+                            "std": 0.011
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1154579.0,
+                            "std": 14828.925
+                        }
+                    }
+                },
+                "9": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.108,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 924226.6,
+                            "std": 5519.69
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.895,
+                            "std": 0.008
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1117362.0,
+                            "std": 10312.808
+                        }
+                    }
+                },
+                "10": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 942603.2,
+                            "std": 10570.666
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.902,
+                            "std": 0.016
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1109294.0,
+                            "std": 19459.715
+                        }
+                    }
+                },
+                "11": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.105,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 949646.1,
+                            "std": 8171.133
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.926,
+                            "std": 0.011
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1080592.0,
+                            "std": 12873.461
+                        }
+                    }
+                },
+                "12": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 942411.3,
+                            "std": 8834.868
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.931,
+                            "std": 0.008
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1074423.0,
+                            "std": 9558.041
+                        }
+                    }
+                }
+            },
+            "zipfian": {
+                "1": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.308,
+                            "std": 0.003
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 324693.9,
+                            "std": 3605.012
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.857,
+                            "std": 0.005
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1166305.0,
+                            "std": 6764.884
+                        }
+                    }
+                },
+                "2": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.176,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 567990.1,
+                            "std": 4558.384
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.788,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1269357.0,
+                            "std": 19175.505
+                        }
+                    }
+                },
+                "3": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.13,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 771373.5,
+                            "std": 6546.46
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.779,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1283832.0,
+                            "std": 20349.89
+                        }
+                    }
+                },
+                "4": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.111,
+                            "std": 0.006
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 905376.8,
+                            "std": 41985.106
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.789,
+                            "std": 0.009
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1267783.0,
+                            "std": 14753.954
+                        }
+                    }
+                },
+                "5": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.103,
+                            "std": 0.013
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 986080.3,
+                            "std": 108627.208
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.792,
+                            "std": 0.01
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1262474.0,
+                            "std": 16128.936
+                        }
+                    }
+                },
+                "6": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.103,
+                            "std": 0.016
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 989311.3,
+                            "std": 141022.531
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.813,
+                            "std": 0.014
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1229833.0,
+                            "std": 20642.482
+                        }
+                    }
+                },
+                "7": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.118,
+                            "std": 0.004
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 847443.3,
+                            "std": 27247.928
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.838,
+                            "std": 0.015
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1193811.0,
+                            "std": 20696.289
+                        }
+                    }
+                },
+                "8": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.113,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 888054.4,
+                            "std": 6650.849
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.862,
+                            "std": 0.017
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1160816.0,
+                            "std": 23155.887
+                        }
+                    }
+                },
+                "9": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.108,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 924936.6,
+                            "std": 6972.96
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.886,
+                            "std": 0.014
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1128303.0,
+                            "std": 17894.898
+                        }
+                    }
+                },
+                "10": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 943839.9,
+                            "std": 5189.974
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.907,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1103120.0,
+                            "std": 14727.674
+                        }
+                    }
+                },
+                "11": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.105,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 952217.7,
+                            "std": 6546.444
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.914,
+                            "std": 0.015
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1094801.0,
+                            "std": 17766.935
+                        }
+                    }
+                },
+                "12": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 945138.5,
+                            "std": 6573.391
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.925,
+                            "std": 0.017
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1081502.0,
+                            "std": 20431.999
                         }
                     }
                 }
@@ -21785,6 +23237,732 @@
                         "throughput": {
                             "mean": 3007030.0,
                             "std": 95510.972
+                        }
+                    }
+                }
+            }
+        },
+        "L": {
+            "uniform": {
+                "1": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.307,
+                            "std": 0.003
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 325518.8,
+                            "std": 2873.781
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.92,
+                            "std": 0.007
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1086905.0,
+                            "std": 7992.003
+                        }
+                    }
+                },
+                "2": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.178,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 560344.5,
+                            "std": 7665.5
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.816,
+                            "std": 0.01
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1226319.0,
+                            "std": 14537.977
+                        }
+                    }
+                },
+                "3": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.13,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 770262.3,
+                            "std": 13299.934
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.816,
+                            "std": 0.014
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1225567.0,
+                            "std": 21766.493
+                        }
+                    }
+                },
+                "4": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.109,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 920980.4,
+                            "std": 9549.496
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.818,
+                            "std": 0.009
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1222489.0,
+                            "std": 12928.063
+                        }
+                    }
+                },
+                "5": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.103,
+                            "std": 0.017
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 991306.1,
+                            "std": 123396.413
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.812,
+                            "std": 0.009
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1232094.0,
+                            "std": 13880.793
+                        }
+                    }
+                },
+                "6": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.097,
+                            "std": 0.009
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1039677.4,
+                            "std": 90725.096
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.826,
+                            "std": 0.01
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1211287.0,
+                            "std": 14419.29
+                        }
+                    }
+                },
+                "7": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.119,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 837528.1,
+                            "std": 17181.977
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.862,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1159657.0,
+                            "std": 16440.81
+                        }
+                    }
+                },
+                "8": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.114,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 880483.7,
+                            "std": 5898.861
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.877,
+                            "std": 0.006
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1140661.0,
+                            "std": 8456.928
+                        }
+                    }
+                },
+                "9": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.109,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 921086.1,
+                            "std": 7402.138
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.903,
+                            "std": 0.014
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1107922.0,
+                            "std": 18209.976
+                        }
+                    }
+                },
+                "10": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.107,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 934544.8,
+                            "std": 14723.854
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.914,
+                            "std": 0.017
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1094531.0,
+                            "std": 21401.065
+                        }
+                    }
+                },
+                "11": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 945851.6,
+                            "std": 8653.845
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.93,
+                            "std": 0.017
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1075437.0,
+                            "std": 19743.173
+                        }
+                    }
+                },
+                "12": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.106,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 946867.1,
+                            "std": 11268.207
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.924,
+                            "std": 0.021
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1082797.0,
+                            "std": 25410.385
+                        }
+                    }
+                }
+            },
+            "zipfian": {
+                "1": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.309,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 323302.6,
+                            "std": 2262.525
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.923,
+                            "std": 0.015
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1083116.0,
+                            "std": 16972.308
+                        }
+                    }
+                },
+                "2": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.177,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 564633.9,
+                            "std": 6475.874
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.814,
+                            "std": 0.011
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1227952.0,
+                            "std": 16250.834
+                        }
+                    }
+                },
+                "3": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.13,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 772217.2,
+                            "std": 6087.792
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.812,
+                            "std": 0.014
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1232499.0,
+                            "std": 21329.545
+                        }
+                    }
+                },
+                "4": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.109,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 916586.6,
+                            "std": 16927.399
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.811,
+                            "std": 0.01
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1232815.0,
+                            "std": 14855.017
+                        }
+                    }
+                },
+                "5": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.098,
+                            "std": 0.007
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1022241.4,
+                            "std": 64069.197
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.807,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1239909.0,
+                            "std": 18355.564
+                        }
+                    }
+                },
+                "6": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.104,
+                            "std": 0.013
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 979027.1,
+                            "std": 120987.661
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.828,
+                            "std": 0.018
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1207818.0,
+                            "std": 25327.726
+                        }
+                    }
+                },
+                "7": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.119,
+                            "std": 0.003
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 844010.2,
+                            "std": 23157.847
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.855,
+                            "std": 0.014
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1169481.0,
+                            "std": 18943.256
+                        }
+                    }
+                },
+                "8": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.113,
+                            "std": 0.002
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 887958.4,
+                            "std": 16380.856
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.884,
+                            "std": 0.016
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1131941.0,
+                            "std": 20430.309
+                        }
+                    }
+                },
+                "9": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.108,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 923610.0,
+                            "std": 8096.45
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.899,
+                            "std": 0.008
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1113021.0,
+                            "std": 9827.107
+                        }
+                    }
+                },
+                "10": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.107,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 935145.1,
+                            "std": 10679.494
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.919,
+                            "std": 0.012
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1088842.0,
+                            "std": 14584.069
+                        }
+                    }
+                },
+                "11": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.105,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 955660.1,
+                            "std": 7653.005
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.919,
+                            "std": 0.016
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1088015.0,
+                            "std": 18954.498
+                        }
+                    }
+                },
+                "12": {
+                    "load": {
+                        "runtime": {
+                            "mean": 0.105,
+                            "std": 0.001
+                        },
+                        "operations": {
+                            "mean": 100000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 948350.1,
+                            "std": 5231.268
+                        }
+                    },
+                    "run": {
+                        "runtime": {
+                            "mean": 0.938,
+                            "std": 0.013
+                        },
+                        "operations": {
+                            "mean": 1000000.0,
+                            "std": 0.0
+                        },
+                        "throughput": {
+                            "mean": 1065950.0,
+                            "std": 14918.094
                         }
                     }
                 }

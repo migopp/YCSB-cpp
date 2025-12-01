@@ -35,6 +35,7 @@ enum Operation {
   SCAN_FAILED,
   READMODIFYWRITE_FAILED,
   DELETE_FAILED,
+  BADREAD,
   MAXOPTYPE
 };
 
@@ -104,6 +105,12 @@ class CoreWorkload {
   ///
   static const std::string SCAN_PROPORTION_PROPERTY;
   static const std::string SCAN_PROPORTION_DEFAULT;
+
+  ///
+  /// The name of the property for the proportion of scan transactions
+  ///
+  static const std::string BADREAD_PROPORTION_PROPERTY;
+  static const std::string BADREAD_PROPORTION_DEFAULT;
 
   ///
   /// The name of the property for the proportion of
@@ -208,6 +215,7 @@ class CoreWorkload {
   DB::Status TransactionRead(DB &db);
   DB::Status TransactionReadModifyWrite(DB &db);
   DB::Status TransactionScan(DB &db);
+  DB::Status TransactionBadRead(DB &db);
   DB::Status TransactionUpdate(DB &db);
   DB::Status TransactionInsert(DB &db);
 

@@ -35,7 +35,8 @@ const char *ycsbc::kOperationString[ycsbc::MAXOPTYPE] = {
   "UPDATE-FAILED",
   "SCAN-FAILED",
   "READMODIFYWRITE-FAILED",
-  "DELETE-FAILED"
+  "DELETE-FAILED",
+  "BADREAD"
 };
 
 const string CoreWorkload::TABLENAME_PROPERTY = "table";
@@ -67,6 +68,9 @@ const string CoreWorkload::INSERT_PROPORTION_DEFAULT = "0.0";
 
 const string CoreWorkload::SCAN_PROPORTION_PROPERTY = "scanproportion";
 const string CoreWorkload::SCAN_PROPORTION_DEFAULT = "0.0";
+
+const string CoreWorkload::BADREAD_PROPORTION_PROPERTY = "badreadproportion";
+const string CoreWorkload::BADREAD_PROPORTION_DEFAULT = "0.0";
 
 const string CoreWorkload::READMODIFYWRITE_PROPORTION_PROPERTY = "readmodifywriteproportion";
 const string CoreWorkload::READMODIFYWRITE_PROPORTION_DEFAULT = "0.0";
@@ -117,6 +121,10 @@ void CoreWorkload::Init(const utils::Properties &p) {
                                                      INSERT_PROPORTION_DEFAULT));
   double scan_proportion = std::stod(p.GetProperty(SCAN_PROPORTION_PROPERTY,
                                                    SCAN_PROPORTION_DEFAULT));
+
+  double badread_proportion = std::stod(
+    p.GetProperty(BADREAD_PROPORTION_PROPERTY, BADREAD_PROPORTION_DEFAULT));
+
   double readmodifywrite_proportion = std::stod(p.GetProperty(
       READMODIFYWRITE_PROPORTION_PROPERTY, READMODIFYWRITE_PROPORTION_DEFAULT));
 
@@ -155,6 +163,12 @@ void CoreWorkload::Init(const utils::Properties &p) {
   if (scan_proportion > 0) {
     op_chooser_.AddValue(SCAN, scan_proportion);
   }
+
+  if (badread_proportion > 0) {
+    op_chooser_.AddValue(BADREAD, badread_proportion);
+  }
+
+
   if (readmodifywrite_proportion > 0) {
     op_chooser_.AddValue(READMODIFYWRITE, readmodifywrite_proportion);
   }
@@ -278,6 +292,9 @@ bool CoreWorkload::DoTransaction(DB &db) {
     case SCAN:
       status = TransactionScan(db);
       break;
+    case BADREAD:
+      status = TransactionBadRead(db);
+      break;
     case READMODIFYWRITE:
       status = TransactionReadModifyWrite(db);
       break;
@@ -335,6 +352,16 @@ DB::Status CoreWorkload::TransactionScan(DB &db) {
     return db.Scan(table_name_, key, len, NULL, result);
   }
 }
+
+DB::Status CoreWorkload::TransactionBadRead(DB &db) {
+    // Generate a guaranteed-invalid key
+    uint64_t key_num = transaction_insert_key_sequence_->Last() + 1000000000ULL;
+    const std::string key = BuildKeyName(key_num);
+
+    std::vector<DB::Field> result;
+    return db.Read(table_name_, key, NULL, result);
+}
+
 
 DB::Status CoreWorkload::TransactionUpdate(DB &db) {
   uint64_t key_num = NextTransactionKeyNum();
