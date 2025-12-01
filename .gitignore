@@ -9,6 +9,3 @@ tags
 compile_commands.json
 .clangd/
 .cache/
-
-raw_data.json
-filtered_data.json
