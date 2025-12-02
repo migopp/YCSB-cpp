@@ -150,6 +150,9 @@ def main():
     graph_one(cfg, ojdk_oa_d_thru_z, filtered_data)
     graph_one(cfg, ojdk_oa_f_thru_z, filtered_data)
 
+    ojdk_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["ojdkchm_db", "rwl_db"])
+    graph_one(cfg, ojdk_a_thru_z, filtered_data)
+
     # sync.Map Uniform
     gsm_a_thru_u = GraphTask("a", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
     gsm_b_thru_u = GraphTask("b", "run", "throughput", "uniform", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
@@ -211,6 +214,12 @@ def main():
     graph_one(cfg, gsm_ojdk_rwl_c_thru_z, filtered_data)
     graph_one(cfg, gsm_ojdk_rwl_d_thru_z, filtered_data)
     graph_one(cfg, gsm_ojdk_rwl_f_thru_z, filtered_data)
+
+    gsm_base_ojdk_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_db", "ojdkchm_oa_db", "rwl_db"])
+    graph_one(cfg, gsm_base_ojdk_rwl_a_thru_z, filtered_data)
+
+    gsm_both_ojdk_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    graph_one(cfg, gsm_both_ojdk_rwl_a_thru_z, filtered_data)
 
 if __name__ == "__main__":
     main()
