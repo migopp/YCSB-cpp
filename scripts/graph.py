@@ -92,7 +92,11 @@ class GraphTask:
         return metric_map[self.metric]
 
     def readable_dist(self):
-        return self.dist[0].upper() + self.dist[1:]
+        d = self.dist[0].upper() + self.dist[1:]
+        if self.dist == "zipfian":
+            return f"{d} (theta = 0.99)"
+        else:
+            return d
 
 def read_all():
     with open("../filtered_data.json", "r") as f:

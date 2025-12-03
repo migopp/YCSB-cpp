@@ -25,8 +25,7 @@ class TrialConfig:
     dist: str
 
     def cmd(self):
-        req_dist = f"-p requestdistribution={self.dist}" if self.dist != "uniform" else ""
-        return f"/usr/bin/time -v ../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P ../workloads/workload{self.workload} {req_dist}"
+        return f"/usr/bin/time -v ../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P ../workloads/workload{self.workload} -p requestdistribution={self.dist}"
 
 dbs = []
 workloads = []
