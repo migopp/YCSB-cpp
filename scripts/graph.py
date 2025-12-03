@@ -56,8 +56,10 @@ class GraphTask:
             units = "sec"
         elif self.metric == "operations":
             units = "mops"
-        else:
+        elif self.metric == "throughput":
             units = "mops/sec"
+        elif "rss" in self.metric:
+            units = "kb"
         y = f"{self.stage} - {self.metric} ({units})"
         return (x, y)
 
