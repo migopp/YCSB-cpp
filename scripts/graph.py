@@ -50,28 +50,28 @@ class GraphTask:
         return me2
 
     def axes(self):
-        x = "number of threads"
+        x = "Number of Threads"
         units = ""
         if self.metric == "runtime":
             units = "sec"
         elif self.metric == "operations":
-            units = "mops"
+            units = "Mops"
         elif self.metric == "throughput":
-            units = "mops/sec"
+            units = "Mops/sec"
         elif "rss" in self.metric:
-            units = "kb"
-        y = f"{self.stage} - {self.metric} ({units})"
+            units = "MB"
+        y = f"{self.stage[0].upper() + self.stage[1:]} - {self.metric[0].upper() + self.metric[1:]} ({units})"
         return (x, y)
 
     def title(self):
         workload_map = {
-            "a": "50% reads, 50% updates",
-            "b": "95% reads, 5% updates",
-            "c": "100% reads",
-            "d": "95% reads, 5% inserts",
-            "e": "50% scans, 5% updates",
-            "f": "50% reads, 50% rwm",
-            "L": "90% bad reads, 5% reads, 5% insert"
+            "a": "50% Reads, 50% Updates",
+            "b": "95% Reads, 5% Updates",
+            "c": "100% Reads",
+            "d": "95% Reads, 5% Inserts",
+            "e": "50% Scans, 5% Updates",
+            "f": "50% Reads, 50% RMW",
+            "L": "90% Bad Reads, 5% Reads, 5% Insert"
         }
         return f"{workload_map[self.workload]}, {self.dist}"
 
@@ -90,6 +90,9 @@ def extract_from(task, data):
             if task.metric == "throughput":
                 base[db]["mean"][i-1] /= 1000000
                 base[db]["std"][i-1] /= 1000000
+            elif "rss" in task.metric:
+                base[db]["mean"][i-1] /= 1000
+                base[db]["std"][i-1] /= 1000
     return (x, base)
 
 def graph_one(cfg, task, data):
@@ -115,6 +118,7 @@ def graph_one(cfg, task, data):
     tit = task.title()
     plt.xlabel(x_axis)
     plt.ylabel(y_axis)
+    plt.ylim(bottom=0)
     plt.title(tit)
     plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
     plt.subplots_adjust(right=0.75)
