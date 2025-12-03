@@ -60,7 +60,7 @@ class GraphTask:
             units = "Mops/sec"
         elif "rss" in self.metric:
             units = "MB"
-        y = f"{self.stage[0].upper() + self.stage[1:]} - {self.metric[0].upper() + self.metric[1:]} ({units})"
+        y = f"{self.readable_stage()} - {self.readable_metric()} ({units})"
         return (x, y)
 
     def title(self):
@@ -73,7 +73,26 @@ class GraphTask:
             "f": "50% Reads, 50% RMW",
             "L": "90% Bad Reads, 5% Reads, 5% Insert"
         }
-        return f"{workload_map[self.workload]}, {self.dist}"
+        return f"{workload_map[self.workload]}, {self.readable_dist()}"
+
+    def readable_workload(self):
+        return self.workload[0].upper() + self.stage[1:]
+
+    def readable_stage(self):
+        return self.stage[0].upper() + self.stage[1:]
+
+    def readable_metric(self):
+        metric_map = {
+            "runtime": "Runtime",
+            "operations": "Operations",
+            "throughput": "Throughput",
+            "max rss": "Max RSS",
+            "avg rss": "Average RSS"
+        }
+        return metric_map[self.metric]
+
+    def readable_dist(self):
+        return self.dist[0].upper() + self.dist[1:]
 
 def read_all():
     with open("../filtered_data.json", "r") as f:
