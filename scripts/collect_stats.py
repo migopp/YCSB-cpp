@@ -36,13 +36,17 @@ def write_one(cfg):
 def stat_one(cfg):
     raw_load_data = [d["load"] for d in cfg.data]
     raw_run_data = [d["run"] for d in cfg.data]
+    raw_tot_data = [d["tot"] for d in cfg.data]
     load_df = pd.DataFrame(raw_load_data)
     run_df = pd.DataFrame(raw_run_data)
+    tot_df = pd.DataFrame(raw_tot_data)
     load_agg = load_df.agg(["mean", "std"])
     run_agg = run_df.agg(["mean", "std"])
+    tot_agg = tot_df.agg(["mean", "std"])
     cfg.stats = {
         "load": load_agg.round(3).to_dict(),
-        "run": run_agg.round(3).to_dict()
+        "run": run_agg.round(3).to_dict(),
+        "tot": tot_agg.round(3).to_dict()
     }
 
 def main():

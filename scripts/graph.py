@@ -150,6 +150,17 @@ def main():
     graph_one(cfg, ojdk_oa_d_thru_z, filtered_data)
     graph_one(cfg, ojdk_oa_f_thru_z, filtered_data)
 
+    ojdk_oa_a_mrss_z = GraphTask("a", "tot", "max rss", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db", "rwl_db"])
+    ojdk_oa_b_mrss_z = GraphTask("b", "tot", "max rss", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db", "rwl_db"])
+    ojdk_oa_c_mrss_z = GraphTask("c", "tot", "max rss", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db", "rwl_db"])
+    ojdk_oa_d_mrss_z = GraphTask("d", "tot", "max rss", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db", "rwl_db"])
+    ojdk_oa_f_mrss_z = GraphTask("f", "tot", "max rss", "zipfian", ["ojdkchm_oa_db", "ojdkchm_db", "rwl_db"])
+    graph_one(cfg, ojdk_oa_a_mrss_z, filtered_data)
+    graph_one(cfg, ojdk_oa_b_mrss_z, filtered_data)
+    graph_one(cfg, ojdk_oa_c_mrss_z, filtered_data)
+    graph_one(cfg, ojdk_oa_d_mrss_z, filtered_data)
+    graph_one(cfg, ojdk_oa_f_mrss_z, filtered_data)
+
     ojdk_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["ojdkchm_db", "rwl_db"])
     graph_one(cfg, ojdk_a_thru_z, filtered_data)
 
@@ -179,6 +190,17 @@ def main():
     graph_one(cfg, gsm_c_thru_z, filtered_data)
     graph_one(cfg, gsm_d_thru_z, filtered_data)
     graph_one(cfg, gsm_f_thru_z, filtered_data)
+
+    gsm_a_mrss_z = GraphTask("a", "tot", "max rss", "zipfian", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
+    gsm_b_mrss_z = GraphTask("b", "tot", "max rss", "zipfian", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
+    gsm_c_mrss_z = GraphTask("c", "tot", "max rss", "zipfian", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
+    gsm_d_mrss_z = GraphTask("d", "tot", "max rss", "zipfian", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
+    gsm_f_mrss_z = GraphTask("f", "tot", "max rss", "zipfian", ["gsm_db", "gsm_diom_ii_db", "rwl_db"])
+    graph_one(cfg, gsm_a_mrss_z, filtered_data)
+    graph_one(cfg, gsm_b_mrss_z, filtered_data)
+    graph_one(cfg, gsm_c_mrss_z, filtered_data)
+    graph_one(cfg, gsm_d_mrss_z, filtered_data)
+    graph_one(cfg, gsm_f_mrss_z, filtered_data)
 
     gsm_L_thru_v = GraphTask("L", "run", "throughput", "zipfian", ["gsm_db", "gsm_diom_db", "gsm_diom_ii_db"])
     graph_one(cfg, gsm_L_thru_v, filtered_data)
@@ -214,6 +236,17 @@ def main():
     graph_one(cfg, gsm_ojdk_rwl_c_thru_z, filtered_data)
     graph_one(cfg, gsm_ojdk_rwl_d_thru_z, filtered_data)
     graph_one(cfg, gsm_ojdk_rwl_f_thru_z, filtered_data)
+
+    gsm_ojdk_rwl_a_mrss_z = GraphTask("a", "tot", "max rss", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_b_mrss_z = GraphTask("b", "tot", "max rss", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_c_mrss_z = GraphTask("c", "tot", "max rss", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_d_mrss_z = GraphTask("d", "tot", "max rss", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    gsm_ojdk_rwl_f_mrss_z = GraphTask("f", "tot", "max rss", "zipfian", ["gsm_diom_ii_db", "ojdkchm_oa_db", "rwl_db"])
+    graph_one(cfg, gsm_ojdk_rwl_a_mrss_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_b_mrss_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_c_mrss_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_d_mrss_z, filtered_data)
+    graph_one(cfg, gsm_ojdk_rwl_f_mrss_z, filtered_data)
 
     gsm_base_ojdk_rwl_a_thru_z = GraphTask("a", "run", "throughput", "zipfian", ["gsm_db", "ojdkchm_oa_db", "rwl_db"])
     graph_one(cfg, gsm_base_ojdk_rwl_a_thru_z, filtered_data)

@@ -26,7 +26,7 @@ class TrialConfig:
 
     def cmd(self):
         req_dist = f"-p requestdistribution={self.dist}" if self.dist != "uniform" else ""
-        return f"../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P ../workloads/workload{self.workload} {req_dist}"
+        return f"/usr/bin/time -v ../build/ycsb -db {self.db_name} -threads {self.threads} -load -run -P ../workloads/workload{self.workload} {req_dist}"
 
 dbs = []
 workloads = []
@@ -38,6 +38,8 @@ def bench_one(cfg):
     print(f"$ {c}")
     r = subprocess.run(c, capture_output=True, text=True, shell=True, check=True)
     raw_o = r.stdout.strip().splitlines()
+    raw_e = r.stderr.strip().splitlines()
+
     data = {
         "load": {
             "runtime": None,
@@ -48,8 +50,13 @@ def bench_one(cfg):
             "runtime": None,
             "operations": None,
             "throughput": None
+        },
+        "tot": {
+            "max rss": None,
+            "avg rss": None
         }
     }
+
     for o in raw_o:
         metric_name, raw_metric_data = o.split(": ")
         data_metric_cat = "bill"
@@ -58,8 +65,10 @@ def bench_one(cfg):
 
         if "Run" in metric_name:
             data_metric_cat = "run"
-        else:
+        elif "Load" in metric_name:
             data_metric_cat = "load"
+        else:
+            data_metric_cat = "tot"
 
         if "runtime" in metric_name:
             data_metric_name = "runtime"
@@ -67,8 +76,26 @@ def bench_one(cfg):
             data_metric_name = "operations"
         elif "throughput" in metric_name:
             data_metric_name = "throughput"
+        elif "Maximum resident set size" in metric_name:
+            data_metric_name = "max rss"
+        elif "Average resident set size" in metric_name:
+            data_metric_name = "avg rss"
 
         data[data_metric_cat][data_metric_name] = data_metric_data
+
+    for e in raw_e:
+        metric_name, raw_metric_data = e.split(": ")
+        data_metric_name = "chubbz"
+
+        if "Maximum resident set size" in metric_name:
+            data_metric_name = "max rss"
+        elif "Average resident set size" in metric_name:
+            data_metric_name = "avg rss"
+        else:
+            continue
+
+        data["tot"][data_metric_name] = float(raw_metric_data)
+
     return data
 
 def write_one(cfg, data):
